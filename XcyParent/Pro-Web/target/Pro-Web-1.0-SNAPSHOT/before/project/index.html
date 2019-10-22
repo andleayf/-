@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+	<meta charset="UTF-8">
+	<head>
+		<script src="js/jquery-1.12.4.min.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="stylesheet" href="css/css.css">
+		<link rel="stylesheet" href="css/style.css" type="text/css">
+		<title>项目演示</title>
+		<script type="text/javascript">
+			// localStorage读取 JSON
+			var project = JSON.parse(localStorage.getItem("project"));
+			$(function () {
+				//alert(project.skills.length);
+				//alert(project.projectBeforeUrl);
+				$("#title").text("项目演示 /"+project.projectName);
+				$("#projectName").text(project.projectName);
+				$("#teacherName").text(project.teacherName);
+				$("#prejectDetial").text(project.projectDetail);
+				//var ul = $("#projectImg .wowslider-container1 .ws_images ul");
+				$("#img2").attr("src",project.projectImg1);
+				$("#img3").attr("src",project.projectImg2);
+				$("#img4").attr("src",project.projectImg3);
+				$("#img5").attr("src",project.projectImg4);
+				$("#img6").attr("src",project.projectImg5);
+				$("#img12").attr("src",project.projectImg1);
+				$("#img13").attr("src",project.projectImg2);
+				$("#img14").attr("src",project.projectImg3);
+				$("#img15").attr("src",project.projectImg4);
+				$("#img16").attr("src",project.projectImg5);
+				for(var i=0;i < project.skills.length;i++){
+					var btn = $("<button  class='btn btn-primary' disabled>"+project.skills[i]+"</button>>");
+					$("#projectSkill").append(btn);
+				}
+
+				if(project.projectBeforeUrl != "" && project.projectBeforeUrl != null){
+					$("#btn-before").attr("href",project.projectBeforeUrl);
+					$("#before")[0].hidden=false;
+				}
+				if(project.projectAfterUrl != "" && project.projectAfterUrl != null){
+					$("#btn-after").attr("href",project.projectAfterUrl);
+					$("#after")[0].hidden = false;
+				}
+
+				if((project.projectBeforeUrl == "" || project.projectBeforeUrl == null)&&(project.projectAfterUrl == "" || project.projectAfterUrl == null)){
+					$("#info")[0].hidden = false;
+				}
+				// $("#beforeUrl").val(projectBeforeUrl);
+				// $("#afterUrl").val(projectAfterUrl);
+
+				/*$("#btn-before").click(function(){
+					if(!confirm("是否进入演示页面")){
+						return false;
+					}
+					if(project.projectBeforeUrl == "" || project.projectBeforeUrl==null){
+						alert("没有可以演示的项目");
+					}else{
+						top.location.replace(project.projectBeforeUrl);
+					}
+				});
+				$("#btn-after").click(function(){
+					if(!confirm("是否进入演示页面")){
+						return false;
+					}
+					if(project.projectAfterUrl == "" || project.projectAfterUrl==null){
+						alert("没有可以演示的项目")
+					}else{
+						location.href=project.projectAfterUrl;
+					}
+				});*/
+			});
+
+		</script>
+	</head>
+	<body class="w100" style="margin-top: 100px;background-color: whitesmoke;background-image: url('img/bg2.jpg');backgrount-size:100% 100%;"><!--background: rgba(0,0,0,0.5) no-repeat scroll !important;-->
+		<div>
+
+		</div>
+
+<!--		<input type="hidden" id="beforeUrl" value="">-->
+<!--		<input type="hidden" id="afterUrl" value="">-->
+
+		<div id="app">
+			<div id="title" class="container mian-nav"></div>
+
+			<div class="classify">
+				<div class="container">
+					<div class="section">
+						<div class="classifyName">
+							<p id="projectName" class="title title-first"></p>
+						</div>
+						<hr>
+						<div class="kcIntro">
+							<p class="int">
+								<span>指导教师</span>&nbsp;&nbsp;<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;
+								<span id="teacherName"></span>
+							</p>
+						</div>
+						<br>
+						<div class="kcIntro">
+							<p class="int">
+								<span>项目介绍</span>&nbsp;&nbsp;<span class="glyphicon glyphicon-book"></span><br>
+								<span id="prejectDetial"></span>
+							</p>
+						</div>
+						<br>
+						<div class="kcIntro">
+								<p class="int">
+									<span>使用的技术</span>&nbsp;&nbsp;<span class="glyphicon glyphicon-wrench"></span>
+								</p>
+								<br>
+								<div id="projectSkill">
+
+								</div>
+						</div>
+						<br>
+						<div class="kcIntro">
+							<p class="int">
+								<span>项目截图</span>&nbsp;&nbsp;<span class="glyphicon glyphicon-camera"></span>
+							</p>
+						</div>
+						<br>
+						<div id="projectImg" class="warper">
+							<div id="wowslider-container1">
+								<div class="ws_images">
+									<ul>
+										<li><img  id="img1" src="images/bimg1.jpg" alt="" /></li>
+										<li><img  id="img2" src=""  alt=""  /></li>
+										<li><img  id="img3" src=""  alt=""  /></li>
+										<li><img  id="img4" src=""  alt="" /></li>
+										<li><img  id="img5" src=""  alt="" /></li>
+										<li><img  id="img6" src=""  alt=""  /></li>
+									</ul>
+								</div>
+								<div class="ws_thumbs">
+									<div>
+										<a target="_blank" href="#"><img id="img11" src="images/simg1.jpg" /></a>
+										<a target="_blank" href="#"><img id="img12" src="" /></a>
+										<a target="_blank" href="#"><img id="img13" src="" /></a>
+										<a target="_blank" href="#"><img id="img14" src="" /></a>
+										<a target="_blank" href="#"><img id="img15" src="" /></a>
+										<a target="_blank" href="#"><img id="img16" src="" /></a>
+									</div>
+								</div>
+								<div class="ws_shadow"></div>
+							</div>
+						</div>
+						<script type="text/javascript" src="js/slider.js"></script>
+						<script type="text/javascript">
+							jQuery("#wowslider-container1").wowSlider({effect:"cube",prev:"",next:"",duration:20*100,delay:20*100,width:716,height:297,autoPlay:true,playPause:true,stopOnHover:false,loop:false,bullets:0,caption:true,captionEffect:"slide",controls:true,onBeforeStep:0,images:0});
+						</script>
+						<br>
+						<div class="kcIntro" >
+							<p class="int">
+								<span>项目演示</span>&nbsp;&nbsp;<span class="glyphicon glyphicon-facetime-video"></span>
+							</p>
+							<br>
+							<div class="btn-group" role="group" aria-label="...">
+								<div id="info" hidden>
+									<span style="color: #FF0E1A">暂时无法演示，过段时间再来~O~</span>
+								</div>
+								<div id="before" hidden>
+									<a  href="#"  target="_blank _parent"id="btn-before"  class="btn btn-default btn-group-sm">前端演示</a>
+								</div>
+								<br>
+								<div id="after" hidden>
+									<a  href="#" target="_blank _parent" id="btn-after"  class="btn btn-default btn-group-sm">后端演示</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="js/index.js"></script>
+	</body>
+
+</html>

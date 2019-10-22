@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="XcyParent:war">
+    <output-path>$PROJECT_DIR$/XcyParent/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>XcyParent</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="XcyParent-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="XcyParent:war exploded" />
+    </root>
+  </artifact>
+</component>

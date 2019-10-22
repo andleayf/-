@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ProUtils" />
+        <module name="ProService" />
+        <module name="ProWeb" />
+        <module name="ProPojo" />
+        <module name="ProDao" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ProDao" target="1.8" />
+      <module name="ProPojo" target="1.8" />
+      <module name="ProService" target="1.8" />
+      <module name="ProUtils" target="1.8" />
+      <module name="ProWeb" target="1.8" />
+      <module name="XcyParent" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

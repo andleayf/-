@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang=en>
+	<meta charset=UTF-8>
+	<meta http-equiv=X-UA-Compatible content="IE=edge">
+	<meta name="author" content="千锋科技">
+	<title>千锋科技-首页</title>
+	<link rel="shortcut icon" href="/before/favicon.ico">
+	<link rel=bookmark href="/before/favicon.ico" type=image/x-icon>
+	<link rel=stylesheet href="css/style.css">
+	<script src="js/jquery-3.1.0.min.js"></script>
+
+	<script>
+
+	</script>
+<body>
+	<div class=wrap id=wrap>
+		<div class=wrapper>
+			<div class=header>
+				<div class="head clearfix">
+					<div class=logo_box>
+						 <h1 class=hidden>千锋科技</h1>
+						<a href='javascript:;' class=logo_link><img src="picture/logo.png" alt=""></a>
+					</div>
+					<div class=nav_box id=nav_box>
+
+					</div>
+				</div>
+			</div>
+			<div class="page_wp" id="page_wp">
+				<div class="page page_1"><span class="page_bg scale_box"></span>
+					<div class="img_box"><img src="" alt=""></div>
+					<div class="txt_box scale_box">
+						<h2>千锋科技</h2>
+						<center><p class="txt_brief">Innovators in the field of networks（网络领域的创新者）</p></center>
+					</div>
+				</div>
+				<div class="page page_2"><span class="page_bg scale_box"></span>
+					<div class="img_box"><img src="" alt=""></div>
+					<div class="txt_box scale_box">
+						<h2>成立时间</h2>
+						<center><p class=txt_brief>2013年9月15日 正式起航！</p></center>
+					</div>
+				</div>
+				<div class="page page_3"><span class="page_bg scale_box"></span>
+					<div class="img_box"><img src="" alt=""></div>
+					<div class="txt_box scale_box">
+						<h2>行事准则</h2>
+						<center><p class=txt_brief>stable accurate fast （稳、准、快）</p></center>
+					</div>
+				</div>
+				<div class="page page_4"><span class="page_bg scale_box"></span>
+					<div class="img_box"><img src="" alt=""></div>
+						<div class="light_wp scale_box"><span class=light_box><i class=light_1></i> <i class=light_2></i> <i class=light_3></i> <i class=light_4></i> <i class=light_5></i></span></div><span class="meteor_box scale_box"></span>
+						<div class="txt_box scale_box">
+						<h2>存在意义</h2>
+						<center><p class=txt_brief>1+1>2（群狼猛于虎）</p></center>
+					</div>
+				</div>
+			</div>
+			<div class="star_wp scale_box" id=star_wp>
+				<span class=star_bg></span>
+				<span class=star_box></span>
+			</div>
+			<canvas id=canvas></canvas>
+			<div class="btns_wp scale_box">
+				<center>
+				<a class="btn_download dh" href="#" >项目列表</a>
+				<a class="btn_download list"  href="javascript:;">成员列表</a>
+				<!--<a class="btn_download" target="_blank" href="https://wpa.qq.com/msgrd?v=3&uin=6993135&site=qq&menu=yes">申请加入</a>-->
+				</center>
+			</div>
+			<div class="btn_control" id="btn_control">
+				<a href=javascript:; class=cur></a>
+				<a href=javascript:;></a>
+				<a href=javascript:;></a>
+				<a href=javascript:;></a>
+			</div>
+		</div>
+	</div>
+
+    <!-- Bootstrap -->   
+    <script src="js/bootstrap.min.js"></script>
+
+	<script src="js/vendors.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+		//list
+		$('.list').click(function (event)
+    	{
+			$.get("/pro/teacher/getTeacherList",function (data) {
+			    <!--存储json-->
+                localStorage.setItem("item", JSON.stringify(data));
+				//alert(data[0].teacherName);
+				if(data != ""){
+					event.preventDefault();
+					<!--传json-->
+					window.location.href = "/pro/before/list/index.jsp?item="+escape(JSON.stringify(data));
+				}
+			});
+    	});
+
+
+    	//nav
+    	$('.dh').click(function (event)
+    	{
+			$.get("/pro/project/getProjectList",function (data) {
+				if(data == "success"){
+					event.preventDefault();
+					window.location.href="/pro/before/nav/index.jsp";
+				}
+			});
+    	});
+    </script>
+	<!--[if IE 6]-->
+	<!--<script type="text/javascript" src="/before/js/dd_png_min.js"></script>-->
+	<script type="text/javascript">
+		var links=document.getElementsByTagName("a");
+		for(var i=0,l=links.length;i<l;i++){
+			links[i].setAttribute("hideFocus",true);
+		}
+	</script>
+	<![endif]-->
+</body>
+</html>

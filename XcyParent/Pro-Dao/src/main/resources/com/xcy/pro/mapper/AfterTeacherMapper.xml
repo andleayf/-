@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xcy.pro.mapper.AfterTeacherMapper">
+    <delete id="afterTeacherDelete" parameterType="int">
+        delete from teacher where teacherId = #{id}
+    </delete>
+    <delete id="batchDelete" parameterType="teacherVo">
+        delete from teacher where
+        <if test="idList != null and idList .size()!=0">
+            <foreach collection="idList" separator="," item="id" open="teacherId in (" close=")">
+                #{id}
+            </foreach>
+        </if>
+    </delete>
+
+    <select id="selectAllTeacher" parameterType="teacherVo" resultType="com.xcy.pro.pojo.Teacher">
+        select * from teacher
+        <where>
+            <if test="teacherName != null and teacherName != ''">
+                and teacherName like '%${teacherName}%'
+            </if>
+
+        </where>
+    </select>
+    <select id="selectTeacherById" resultType="com.xcy.pro.pojo.Teacher">
+        select * from teacher where teacherId = #{id}
+    </select>
+    <select id="selectTeacherName" resultType="java.lang.String" parameterType="string">
+        select teacherName from teacher where teacherName like '%${teacherName}%'
+    </select>
+
+
+    <insert id="addTeacher" parameterType="com.xcy.pro.pojo.Teacher">
+        insert into teacher(teacherId,teacherName,teacherDetail,teacherImg,teacherQQ,teacherWX)
+        value (#{teacherId},#{teacherName},#{teacherDetail},#{teacherImg},#{teacherQQ},#{teacherWX})
+    </insert>
+    <update id="updateTeacher" parameterType="com.xcy.pro.pojo.Teacher">
+        update teacher
+        set
+        teacherName=#{teacherName},
+
+
+            <if test="teacherImg != null and teacherImg != ''">
+                teacherImg=#{teacherImg},
+            </if>
+            <if test="teacherQQ != null and teacherQQ != ''">
+                teacherQQ=#{teacherQQ},
+            </if>
+            <if test="teacherWX != null and teacherWX != ''">
+                teacherWX=#{teacherWX},
+            </if>
+
+
+        teacherDetail=#{teacherDetail}
+        where teacherId=#{teacherId}
+    </update>
+    <update id="updateTeacherInfo" parameterType="com.xcy.pro.pojo.Teacher">
+        update teacher
+        set teacherName=#{teacherName}
+        teacherDetail = #{teacherDetail}
+        where teacherId = #{teacherId}
+    </update>
+</mapper>

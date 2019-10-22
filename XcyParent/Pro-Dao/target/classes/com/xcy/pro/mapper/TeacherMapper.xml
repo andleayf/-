@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xcy.pro.mapper.TeacherMapper">
+
+    <select id="getTeacherList" resultType="teacher">
+        select * from teacher
+    </select>
+
+    <select id="selectAllTeacher"  resultType="Teacher">
+        select *  from teacher
+    </select>
+    <delete id="delBatchTeacher" parameterType="ProjectQueryVo">
+        delete from teacher where
+        <if test="idList != null and idList.size() != 0">
+            <foreach collection="idList" item="sid" open=" teacherId in (" close=")" separator=",">
+                #{sid}
+            </foreach>
+        </if>
+    </delete>
+    <select id="selectTeacherList" resultType="Teacher" >
+        select *,teacherName from teacher
+    </select>
+    <insert id="saveTeacher" parameterType="Teacher" >
+        insert into teacher (teacherId, teacherName, teacherDetail,
+        teacherImg, teacherQQ, teacherWX
+        )
+        values (#{teacherId,jdbcType=INTEGER}, #{teacherName,jdbcType=VARCHAR}, #{teacherDetail,jdbcType=VARCHAR},
+        #{teacherImg,jdbcType=VARCHAR}, #{teacherQQ,jdbcType=VARCHAR}, #{teacherWX,jdbcType=VARCHAR}
+      )
+    </insert>
+    <update id="updateTeacherById" parameterType="Teacher">
+        update teacher
+        set
+        teacherName = #{teacherName},
+        teacherDetail = #{teacherDetail},
+        teacherImg = #{teacherImg},
+        teacherQQ = #{teacherQQ},
+        teacherWX = #{teacherWX}
+        where
+        teacherId=#{teacherId}
+    </update>
+    <select id="getTeacherById" parameterType="Teacher" resultType="Teacher">
+        select * from teacher where teacherId=#{teacherId}
+    </select>
+    <delete id="delTeacherById" parameterType="Teacher">
+        delete from teacher where teacherId = #{teacherId}
+    </delete>
+</mapper>

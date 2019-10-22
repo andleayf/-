@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xcy.pro.mapper.ProjectMapper">
+
+    <select id="getProjectById" parameterType="int" resultType="com.xcy.pro.pojo.Project">
+        select  * ,teacherName from project p left join  teacher t on p.tId = teacherId where p.projectId = #{projectId};
+    </select>
+
+    <select id="getProjectList" resultType="com.xcy.pro.pojo.Project">
+        select * from project
+    </select>
+
+    <!--************-->
+    <select id="selectAllProject"  resultType="Project">
+        select p.* , t.teacherName from project p left join teacher t on p.tId = t.teacherId
+        where projectSkill like '%${projectSkill}%' and projectName like '%${projectName}%'
+
+    </select>
+    <delete id="delBatchProject" parameterType="ProjectQueryVo" >
+        delete from project where
+        <if test="idList != null and idList.size() != 0">
+            <foreach collection="idList" item="sid" open=" projectId in (" close=")" separator=",">
+                #{sid}
+            </foreach>
+        </if>
+    </delete>
+    <insert id="saveProject" parameterType="Project">
+    insert into project (projectId, projectName, projectSkill,
+      projectBeforeUrl, projectAfterUrl, projectDetail,
+      projectImg1, projectImg2, projectImg3,
+      projectImg4, projectImg5, tId
+      )
+    values (#{projectId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{projectSkill,jdbcType=VARCHAR},
+      #{projectBeforeUrl,jdbcType=VARCHAR}, #{projectAfterUrl,jdbcType=VARCHAR}, #{projectDetail,jdbcType=VARCHAR},
+      #{projectImg1,jdbcType=VARCHAR}, #{projectImg2,jdbcType=VARCHAR}, #{projectImg3,jdbcType=VARCHAR},
+      #{projectImg4,jdbcType=VARCHAR}, #{projectImg5,jdbcType=VARCHAR}, #{tId,jdbcType=INTEGER}
+      )
+  </insert>
+    <!--<select id="getProjectById" parameterType="Project" resultType="Project">
+        select * from project where projectId = #{projectId}
+    </select>-->
+    <update id="updateProjectById" parameterType="Project" >
+        update project
+        set
+        projectName = #{projectName},
+        projectSkill = #{projectSkill},
+        projectBeforeUrl = #{projectBeforeUrl},
+        projectAfterUrl = #{projectAfterUrl},
+        projectDetail = #{projectDetail},
+        projectImg1 = #{projectImg1},
+        projectImg2 = #{projectImg2},
+        projectImg3 = #{projectImg3},
+        projectImg4 = #{projectImg4},
+        projectImg5 = #{projectImg5},
+        tId = #{tId}
+        where projectId = #{projectId}
+    </update>
+    <delete id="delProjectById" parameterType="Project">
+        delete from project where projectId = #{projectId}
+    </delete>
+</mapper>

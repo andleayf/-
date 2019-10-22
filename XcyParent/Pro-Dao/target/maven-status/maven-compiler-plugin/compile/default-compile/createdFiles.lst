@@ -1,0 +1,5 @@
+com\xcy\pro\mapper\AdminMapper.class
+com\xcy\pro\mapper\ProjectMapper.class
+com\xcy\pro\mapper\UserMapper.class
+com\xcy\pro\mapper\AfterTeacherMapper.class
+com\xcy\pro\mapper\TeacherMapper.class

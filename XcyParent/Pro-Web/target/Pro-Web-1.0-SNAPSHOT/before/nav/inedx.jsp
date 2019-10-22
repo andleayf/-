@@ -1,0 +1,69 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: 81515
+  Date: 2019/7/1
+  Time: 11:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html >
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="千峰科技">
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>千峰科技</title>
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <style type='text/css'>
+        li{width:300px!important;}
+    </style>
+    <script type="text/javascript">
+
+    </script>
+
+</head>
+<body>
+<div class="animation-wrapper">
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+    <div class="particle particle-4"></div>
+</div>
+
+<div id='container'>
+    <div class="title">
+        <h1 class="h1">实战项目</h1>
+        <p class="list-dis">以下项目均为千峰科技运营</p>
+        <hr>
+    </div>
+
+    <div class="list">
+        <!--<li class="btn third">
+           <span class="icon">P</span>
+            <a href="https://u1f.cn/" target="_blank" class="text">
+                <h2>IDC云服务</h2>
+                <h3>安全、领先、稳定</h3>
+            </a>
+        </li>-->
+        <c:forEach items="${project.list}"var="project">
+            <li class="btn third">
+                <span class="icon">P</span>
+                <a href="https://u1f.cn/" target="_blank" class="text">
+                    <span>${project.projectName}</span>
+                    <span>${project.projectType}</span>
+                </a>
+            </li>
+        </c:forEach>
+
+	</div>
+
+    <div style="width:100%; height:100px;"></div>
+</div>
+
+<script src="js/index.js"></script>
+</body>
+</html>

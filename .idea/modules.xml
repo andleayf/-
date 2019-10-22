@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/XcyParent/Pro-Dao/ProDao.iml" filepath="$PROJECT_DIR$/XcyParent/Pro-Dao/ProDao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XcyParent/Pro-Pojo/ProPojo.iml" filepath="$PROJECT_DIR$/XcyParent/Pro-Pojo/ProPojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XcyParent/Pro-Service/ProService.iml" filepath="$PROJECT_DIR$/XcyParent/Pro-Service/ProService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XcyParent/Pro-Utils/ProUtils.iml" filepath="$PROJECT_DIR$/XcyParent/Pro-Utils/ProUtils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XcyParent/Pro-Web/ProWeb.iml" filepath="$PROJECT_DIR$/XcyParent/Pro-Web/ProWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/XcyParent/XcyParent.iml" filepath="$PROJECT_DIR$/XcyParent/XcyParent.iml" />
+    </modules>
+  </component>
+</project>
